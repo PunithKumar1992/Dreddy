@@ -1,0 +1,118 @@
+
+@media only screen and (max-width:1199px){
+.topbar{margin-top: 0;}
+.header-body .logo {
+    right: 0;
+    top: 42px;
+    width: 320px;
+}
+}
+@media only screen and (max-width: 991px) {
+.header-body .logo {
+    left: 0;
+    right: unset;
+    top: 50px;
+    width: 230px;
+}
+.highbox {
+    margin-bottom: 20px;
+}
+.sticky-header-active .header-body .logo {
+    top: 0;
+}
+.homebanner .owl-carousel {
+    margin-top: 0;
+}
+.bannerlayer {
+    height: 370px;
+}
+#Follow .col-md-4 > a {
+    display: block;
+    margin-bottom: 20px;
+}
+#Gallery .tabs.tabs-bottom .nav-tabs li a span {
+    font-size: 13px;}
+
+}
+@media only screen and (max-width: 767px) {
+.bannerlayer {
+    height: 317px;
+}
+.bannerlayer {
+    display: none;
+}
+.homebanner .owl-carousel .owl-dots {
+    margin-top: 14px !important;
+}
+
+}
+@media only screen and (max-width: 639px) {
+.bannerlayer {
+    height: 251px;
+}
+.tabs.tabs-simple .nav-tabs > li a, .tabs.tabs-simple .nav-tabs > li a:hover, .tabs.tabs-simple .nav-tabs > li a:focus{padding: 15px 0;}
+#Gallery .tabs.tabs-bottom .nav-tabs li a span {
+    font-size: 9px;
+}
+.careerimg {
+    display: none;
+}
+
+}
+@media only screen and (max-width: 479px) {
+.bannerlayer {
+    height: 201px;
+}
+.quotespad {
+    padding: 10px;
+}
+.quotespad p {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 30px;
+}
+.mainheading {
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 40px;}
+footer p {
+    font-size: 12px;
+    line-height: 17px;
+}
+.quotespad {
+    margin: 10px 0;
+}
+.addresstxt > p {
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0;
+    padding: 0;
+}
+.smlink img {
+    margin: 0 3px;
+    width: 25px;
+}
+
+}
+@media only screen and (max-width: 359px) {
+.bannerlayer {
+    height: 185px;
+}
+.quotespad p {
+    font-size: 8px;
+    font-weight: 600;
+    line-height: 30px;
+}
+
+}
+@media only screen and (max-width: 266px) {
+.bannerlayer {
+    height: 180px;
+}
+.quotespad p {
+    font-size: 6px;
+    font-weight: 600;
+    line-height: 30px;
+}
+
+}
