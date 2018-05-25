@@ -1,10 +1,14 @@
 package com.appfone.dreddy.pojo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -45,6 +49,21 @@ public class Dreddyarticle {
 	
 	@Transient
 	MultipartFile articlegridfile;
+	
+	@Column(name="article_comments")
+	private int article_comments;
+	
+	@OneToMany(mappedBy="article")
+	private List<Dreddycomments>comments=new ArrayList<>();
+	
+
+	public int getArticle_comments() {
+		return article_comments;
+	}
+
+	public void setArticle_comments(int article_comments) {
+		this.article_comments = article_comments;
+	}
 
 	public int getArticle_id() {
 		return article_id;
@@ -125,6 +144,15 @@ public class Dreddyarticle {
 	public void setArticle_gridimage(String article_gridimage) {
 		this.article_gridimage = article_gridimage;
 	}
+
+	public List<Dreddycomments> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Dreddycomments> comments) {
+		this.comments = comments;
+	}
+	
 	
 	
 	

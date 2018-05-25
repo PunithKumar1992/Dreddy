@@ -96,13 +96,13 @@
 										<nav>
 											<ul class="nav nav-pills" id="mainNav">
 												<li><a data-hash href="index.html">Home</a></li>
-												<li><a data-hash href="#About">About</a></li>
-												<li class="active"><a data-hash href="#Gallery">Gallery</a></li>
-												<li><a data-hash href="#Videos">Videos</a></li>
-												<li><a data-hash href="#Contributuion">Contributuion</a></li>
-												<li><a data-hash href="#Quotes">Quotes</a></li>
+												<li><a data-hash href="index.html#About">About</a></li>
+												<li class="active"><a data-hash href="index.html#Gallery">Gallery</a></li>
+												<li><a data-hash href="index.html#Videos">Videos</a></li>
+												<li><a data-hash href="index.html#Contributuion">Contributuion</a></li>
+												<li><a data-hash href="index.html#Quotes">Quotes</a></li>
                                                                                                 <li><a data-hash href="blog-list.html">Blog</a></li>
-												<li><a data-hash href="#Contact">Contact us</a></li>
+												<li><a data-hash href="index.html#Contact">Contact us</a></li>
 											</ul>
 										</nav>
 									</div>
@@ -127,7 +127,7 @@
 								<div class="recent-posts">
 									<article class="post">
                                       <a href="${articlebrief}"> <img alt="" src="images/articlegridimages/${artigridlist.article_gridimage}" class="img-responsive mb-md"></a>
-										<h4><a  href="${articlebrief}" style="color:red;">${artigridlist.article_caption}</a></h4>
+										<h4><a  href="${articlebrief}">${artigridlist.article_caption}</a></h4>
 										<p>${artigridlist.article_brief}<a href="${articlebrief}" class="read-more"><img width="30%" height="35px" src="images/btn1.jpg">   </a></p>
 									</article>
 								</div>

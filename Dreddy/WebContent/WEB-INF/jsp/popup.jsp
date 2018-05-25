@@ -4,7 +4,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Stepperz Studio</title>
+  <title>Dayananda reddy:: popup</title>
+  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
   
   
   <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>

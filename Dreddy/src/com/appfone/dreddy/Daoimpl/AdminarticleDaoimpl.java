@@ -24,6 +24,7 @@ private SessionFactory factory;
 		Session session = factory.openSession();
 		session.save(article);
 		
+		
 	}
 
 	@Override
@@ -60,6 +61,12 @@ private SessionFactory factory;
 		query.setParameter("artid", article_id);
 		int res = query.executeUpdate();
 		
+	}
+
+	@Override
+	public void updatearticle(Dreddyarticle article) {
+		Session session = factory.getCurrentSession();
+		session.update(article);
 	}
 
 	

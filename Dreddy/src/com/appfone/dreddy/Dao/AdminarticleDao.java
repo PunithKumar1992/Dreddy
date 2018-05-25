@@ -11,5 +11,6 @@ public interface AdminarticleDao {
 	public Dreddyarticle getsinglearticle(int articleid);
 	public int articlecount();
 	public void deletearticle(int article_id);
+	public void updatearticle(Dreddyarticle article);
 	
 }

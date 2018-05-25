@@ -97,13 +97,13 @@
 										<nav>
 											<ul class="nav nav-pills" id="mainNav">
 												<li><a data-hash href="index.html">Home</a></li>
-												<li><a data-hash href="#About">About</a></li>
+												<li><a data-hash href="index.html#About">About</a></li>
 												<li class="active"><a data-hash href="#Gallery">Gallery</a></li>
-												<li><a data-hash href="#Videos">Videos</a></li>
-												<li><a data-hash href="#Contributuion">Contributuion</a></li>
-												<li><a data-hash href="#Quotes">Quotes</a></li>
-                                                                                                <li><a data-hash href="blog-list.html">Blog</a></li>
-												<li><a data-hash href="#Contact">Contact us</a></li>
+												<li><a data-hash href="index.html#Videos">Videos</a></li>
+												<li><a data-hash href="index.html#Contribution">Contributuion</a></li>
+												<li><a data-hash href="index.html#Quotes">Quotes</a></li>
+                                                <li><a data-hash href="blog-list.html">Blog</a></li>
+												<li><a data-hash href="index.html#Contact">Contact us</a></li>
 											</ul>
 										</nav>
 									</div>

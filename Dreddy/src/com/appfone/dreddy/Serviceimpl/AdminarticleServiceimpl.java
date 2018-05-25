@@ -52,4 +52,10 @@ public class AdminarticleServiceimpl implements AdminarticleService {
 		
 	}
 
+	@Override
+	@Transactional
+	public void updatearticle(Dreddyarticle article) {
+		articledao.updatearticle(article);
+	}
+
 }

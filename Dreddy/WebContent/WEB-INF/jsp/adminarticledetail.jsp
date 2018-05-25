@@ -3,7 +3,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <head>
-<title>Navarasa Natana Academy::Admin</title>
+<title>Dayananda reddy:: articledetail</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Visitors Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -14,6 +14,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //bootstrap-css -->
 <!-- Custom CSS -->
 <link href="admincss/style.css" rel='stylesheet' type='text/css' />
+<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+
 <link href="admincss/style-responsive.css" rel="stylesheet"/>
 <!-- font CSS -->
 <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
@@ -106,21 +108,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </a>
                 </li>
 		<li>
-                    <a href="adminregistration.html">
-                       <i class="fa fa-comments-o" aria-hidden="true"></i>
-                       <span>Registration</span>
+                    <a href="adminquotes.html">
+                      <i class="fa fa-quote-left" aria-hidden="true"></i>
+                       <span>Quotes</span>
                     </a>
                 </li>
-		<li>
-                    <a href="">
+		
+                <li>
+                    <a href="adminpionners.html">
                        <i class="fa fa-comments-o" aria-hidden="true"></i>
-                       <span>Blog</span>
+                       <span>Pionners</span>
                     </a>
                 </li>
                 <li>
-                    <a href="admincontact.html">
-                       <i class="fa fa-comments-o" aria-hidden="true"></i>
-                       <span>Contact Us</span>
+                    <a href="adminarticlecomments.html">
+                      <i class="fa fa-comment" aria-hidden="true"></i>
+                       <span>Article Comments</span>
+                    </a>
+                </li>
+                 <li>
+                    <a href="adminarticlereplys.html">
+                      <i class="fa fa-reply" aria-hidden="true"></i>
+                       <span>Article Replys</span>
                     </a>
                 </li>
                 <!--<li>

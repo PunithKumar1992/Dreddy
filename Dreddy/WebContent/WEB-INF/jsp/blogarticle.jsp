@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
+	<head>
 
 		<!-- Basic -->
 		<meta charset="utf-8">
@@ -49,6 +50,10 @@
 		<link rel="stylesheet" href="css/custom.css">
 		<link rel="stylesheet" href="css/media.css">
 		<!-- Head Libs -->
+		
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script src="vendor/modernizr/modernizr.min.js"></script>
                 <!-- Google Tag Manager -->
                 <script>
@@ -67,6 +72,37 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-116664454-1');
                 </script>
+                
+                
+                <style>
+.scroll
+{
+overflow-Y:scroll;
+ height:500px;
+}
+
+/* width */
+.scroll::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+.scroll::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 4px grey; 
+    border-radius: 3px;
+}
+ 
+/* Handle */
+.scroll::-webkit-scrollbar-thumb {
+    background: #ffd28e; 
+    border-radius: 3px;
+}
+
+/* Handle on hover */
+.scroll::-webkit-scrollbar-thumb:hover {
+    background: #ffd28e; 
+}
+</style>
 
 	</head>
 	<body class="one-page" data-target="#header" data-spy="scroll" data-offset="100">
@@ -96,13 +132,13 @@
 										<nav>
 											<ul class="nav nav-pills" id="mainNav">
 												<li><a data-hash href="index.html">Home</a></li>
-												<li><a data-hash href="#About">About</a></li>
-												<li class="active"><a data-hash href="#Gallery">Gallery</a></li>
-												<li><a data-hash href="#Videos">Videos</a></li>
-												<li><a data-hash href="#Contributuion">Contributuion</a></li>
-												<li><a data-hash href="#Quotes">Quotes</a></li>
-                                                                                                <li><a data-hash href="blog-list.html">Blog</a></li>
-												<li><a data-hash href="#Contact">Contact us</a></li>
+												<li><a data-hash href="index.html#About">About</a></li>
+												<li ><a data-hash href="index.html#Gallery">Gallery</a></li>
+												<li><a data-hash href="index.html#Videos">Videos</a></li>
+												<li><a data-hash href="index.html#Contributuion">Contributuion</a></li>
+												<li><a data-hash href="index.html#Quotes">Quotes</a></li>
+                                                <li class="active"><a data-hash href="blog-list.html">Blog</a></li>
+												<li><a data-hash href="index.html#Contact">Contact us</a></li>
 											</ul>
 										</nav>
 									</div>
@@ -121,26 +157,26 @@
 							<div class="blog-posts single-post">
 								<article class="post post-large blog-single-post">
 									<div class="post-image">
-                                                                            <img src="images/articleimages/${currentarticle.article_image}" alt="" class="img-responsive">
+                                    <img src="images/articleimages/${currentarticle.article_image}" alt="" class="img-responsive">
 									</div>
 
 									<div class="post-date">
-										<span class="day">${currentarticle.article_date}</span>
-										
+										<span class="day">${curartdate}</span>
+										<span class="month">${curartmonth}</span>
 									</div>
 
 									<div class="post-content">
 
-										<h2>${currentarticle.article_caption}</h2>
+										<h2><b>${currentarticle.article_caption}</b></h2>
 										<div class="post-meta">
 											<span><i class="fa fa-user"></i> By <a href="#">${currentarticle.article_by}</a> </span>
-											<span><i class="fa fa-tag"></i> <a href="#"></a>, <a href="#">News</a> </span>
-											<span><i class="fa fa-comments"></i> <a href="#">12 Comments</a></span>
+											<span><i class="fa fa-comments"></i> <a href="#" data-toggle="modal" data-target="#myModal">${currentarticle.article_comments} Comments</a></span>
 										</div>
                                         <p style="text-align: justify;">${currentarticle.article_detail}</p>
 									</div>
 								</article>
 							</div>
+							
 						</div>
 						<div class="col-md-3 mt-xlg">
 							<aside class="sidebar">
@@ -183,9 +219,180 @@
 								</div>
 							</aside>
 						</div>
+						
+						
 					</div>
 				</div>
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 mt-xlg">
+						<section>
+			       <h3 style="color:#f26122;margin-left:10%;"> Leave Your Comment Here...</h3> 
+									  <div class="col-md-9" >
+                                                    <div class="col-md-6" style="margin-top: 2%;margin-bottom: 2%;margin-left:10%">
+							  <form:form method="post" action="commentarticle.html" modelAttribute="articlecomment" onsubmit="return FormValidation();" onchange="return FormValidation();">
+								<div class="col-md-12 pr-xs pl-xs form-group">
+								<form:input path="commenter_name" placeholder="Name " id="firstname" class="form-control" style="border-radius:10px"/>
+								</div>
+								
+								<div class="col-md-12 pr-xs pl-xs form-group">
+								<form:input path="commenter_email" placeholder="E-Mail "  id="email" class="form-control" style="border-radius:10px"/>
+								</div>
+								
+								<div class="col-md-12 pr-xs pl-xs form-group">
+								<form:textarea path="commenter_msg" placeholder="Comment Message" id="msg" class="form-control" rows="5" style="border-radius:10px;resize:none;"/>
+								</div>
+								<input type="hidden" name="commentarticleid" value="${currentarticle.article_id}">
+								<div class="col-md-12 pr-xs pl-xs right">
+									<input type="submit" class="btn btn-warning btn-lg" value="Comment" style="border-radius:10px">
+								</div>
+							</form:form>
+						</div>
+						</div>
 			</section>
+			
+						</div>
+						</div>
+						</div>
+						<div class="container">
+  <!--  modal comment reply-->
+  <style>
+
+
+.containerx {
+    border: 2px solid #dedede;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.darker {
+    border-color: #ccc;
+    background-color: #ddd;
+}
+
+.containerx::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.containerx img {
+    float: left;
+    max-width: 60px;
+    width: 100%;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+
+.containerx img.right {
+    float: right;
+    margin-left: 20px;
+    margin-right:0;
+}
+
+.time-right {
+    float: right;
+    color: #aaa;
+}
+
+.time-left {
+    float: left;
+    color: #999;
+}
+</style>
+ 
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content" >
+      <div class="media response-info scroll">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Comments...</h4>
+        </div>
+        <div class="modal-body">
+      <c:forEach var="comment" items="${cmtrplylist}">
+      <c:url var="replay1" value="usercommentreplay.html">
+        <c:param name="article_id" value="${comment.article.article_id}"></c:param>
+      	<c:param name="comment_id" value="${comment.commenter_id}"></c:param>
+        </c:url>
+         <div class="containerx" style="width:60%">
+		 <label>${comment.commenter_name}</label>
+  <img src="images/person.png" alt="author" style="width:100%;">
+  
+  <p>${comment.commenter_msg}</p>
+  <a href="" onmouseover="showmd('${replay1}');" data-toggle="modal" data-target="#myModal2">Reply</a>
+
+</div>
+<c:forEach var="reply1" items="${comment.replay}">
+<c:if test="${not empty reply1.replyer_msg}">
+<div class="containerx darker" style="width:60%;margin-left:40%;">
+  <img src="images/person.png" alt="user" class="right" style="width:100%;">
+  <label>${reply1.replyer_name}</label>
+  <p>${reply1.replyer_msg}</p>
+ <a href="" onmouseover="showmd('${replay1}');" data-toggle="modal" data-target="#myModal2">Reply</a>
+</div>
+</c:if>
+</c:forEach>
+
+</c:forEach>
+        </div>
+        
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <!-- Modal -->
+  <div class="modal fade" id="myModal2" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content" style="width: 500px;padding: 2em;">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Reply </h4>
+        </div>
+
+						 <div class="col-md-12" >
+                            <div class="col-md-10" style="margin-top: 2%;margin-bottom: 2%;margin-left:10%">
+							  <form:form action="" id="replyform" modelAttribute="replymsg" onsubmit="return FormValidation1();" onchange="return FormValidation1();">
+								<div class="col-md-12 pr-xs pl-xs form-group">
+								<form:input path="replyer_name"  placeholder="Name " class="form-control"  id="firstname1" style="border-radius:10px"/>
+								</div>
+								
+								<div class="col-md-12 pr-xs pl-xs form-group">
+								<form:input path="replyer_email"  placeholder="Email " class="form-control" id="email1" style="border-radius:10px"/>
+								</div>
+								
+								<div class="col-md-12 pr-xs pl-xs form-group">
+									<form:textarea path="replyer_msg" placeholder=" Reply Message"  id="msg1" class="form-control" rows="5" style="border-radius:10px;resize:none;"/>
+									</div>
+								<div class="col-md-12 pr-xs pl-xs right">
+									<input type="submit" class="btn btn-warning btn-lg" value="Reply Comment" style="border-radius:10px">
+								</div>
+							</form:form>
+						</div>
+						</div>
+						
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+						</section>
 			<footer>
 				<div class="container">
 					<div class="row">
@@ -231,5 +438,195 @@
                 <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TRGKVXJ" height="0" width="0" style="display:none;visibility:hidden"></iframe>
                 </noscript>
                 <!-- End Google Tag Manager (noscript) -->
+                
+    <script type="text/javascript">
+function FormValidation()
+{
+	
+  var fn=document.getElementById('firstname').value;
+    if(fn == ""){
+        document.getElementById('firstname').style.borderColor = "red";
+        return false;
+    }else{
+        document.getElementById('firstname').style.borderColor = "green";
+    }
+    if (/^[0-9]+$/.test(document.getElementById("firstname").value)) {
+      
+        document.getElementById('firstname').style.borderColor = "red";
+        return false;
+    }else{
+        document.getElementById('firstname').style.borderColor = "green";
+        
+    }
+    if(fn.length <=2){
+        
+        document.getElementById('firstname').style.borderColor = "red";
+        return false;
+    }else{
+        document.getElementById('firstname').style.borderColor = "green";
+    }
+    
+    var em=document.getElementById('email').value;
+    if(em=="")
+ 	   {
+ 	   document.getElementById('email').style.borderColor = "red";
+ 	   
+        return false;
+    }else{
+        document.getElementById('email').style.borderColor = "green";    	    
+    }
+    if(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/.test(document.getElementById("email").value))
+    	{
+    	document.getElementById('email').style.borderColor = "green";
+    	}
+    else
+	   {
+	   document.getElementById('email').style.borderColor = "red";
+	   return false;
+	   }
+   
+  
+  var msg=document.getElementById('msg').value;
+	
+  if(msg== "")
+  {
+      document.getElementById('msg').style.borderColor = "red";
+      return false;
+  }
+  else
+  {
+      document.getElementById('msg').style.borderColor = "green";
+  }
+  if (/^[0-9]+$/.test(document.getElementById("msg").value)) 
+  {
+     //alert("First Name Contains Numbers!");
+      document.getElementById('msg').style.borderColor = "red";
+      return false;
+  }
+  else
+  {
+      document.getElementById('msg').style.borderColor = "green";
+  }
+  if(msg.length <=2)
+  {
+      //alert('Your Name is To Short');
+      document.getElementById('msg').style.borderColor = "red";
+      return false;
+  }
+  else
+  {
+      document.getElementById('msg').style.borderColor = "green";
+  }
+  
+   
+   
+	   
+}
+
+
+  
+		
+	</script>
+	 <script type="text/javascript">
+function FormValidation1()
+{
+	
+  var fn=document.getElementById('firstname1').value;
+    if(fn == ""){
+        document.getElementById('firstname1').style.borderColor = "red";
+        return false;
+    }else{
+        document.getElementById('firstname1').style.borderColor = "green";
+    }
+    if (/^[0-9]+$/.test(document.getElementById("firstname1").value)) {
+      
+        document.getElementById('firstname1').style.borderColor = "red";
+        return false;
+    }else{
+        document.getElementById('firstname1').style.borderColor = "green";
+        
+    }
+    if(fn.length <=2){
+        
+        document.getElementById('firstname1').style.borderColor = "red";
+        return false;
+    }else{
+        document.getElementById('firstname1').style.borderColor = "green";
+    }
+    
+    var em=document.getElementById('email1').value;
+    if(em=="")
+ 	   {
+ 	   document.getElementById('email1').style.borderColor = "red";
+ 	   
+        return false;
+    }else{
+        document.getElementById('email1').style.borderColor = "green";    	    
+    }
+    if(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/.test(document.getElementById("email1").value))
+    	{
+    	document.getElementById('email1').style.borderColor = "green";
+    	}
+    else
+	   {
+	   document.getElementById('email1').style.borderColor = "red";
+	   return false;
+	   }
+   
+  
+  var msg=document.getElementById('msg1').value;
+	
+  if(msg== "")
+  {
+      document.getElementById('msg1').style.borderColor = "red";
+      return false;
+  }
+  else
+  {
+      document.getElementById('msg1').style.borderColor = "green";
+  }
+  if (/^[0-9]+$/.test(document.getElementById("msg1").value)) 
+  {
+     //alert("First Name Contains Numbers!");
+      document.getElementById('msg1').style.borderColor = "red";
+      return false;
+  }
+  else
+  {
+      document.getElementById('msg1').style.borderColor = "green";
+  }
+  if(msg.length <=2)
+  {
+      //alert('Your Name is To Short');
+      document.getElementById('msg1').style.borderColor = "red";
+      return false;
+  }
+  else
+  {
+      document.getElementById('msg1').style.borderColor = "green";
+  }
+  
+   
+   
+	   
+}
+
+
+  
+		
+	</script>
+	<script type="text/javascript">
+	function showmd(temp)
+	{
+		$('#replyform').attr('action',temp);
+		
+	}
+	
+	
+	</script>
+	
+	
+	
+                
 	</body>
 </html>

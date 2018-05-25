@@ -420,22 +420,30 @@
 						</div>
 						<div class="col-md-12">
 							<div class="owl-carousel owl-theme mb-none" data-plugin-options="{'items': 1}">
-								<div style="margin-left: 25%;">
+								<div>
+								<c:forEach var="feedlist" items="${feedlist}">
+								<c:if test="${feedlist.feeddisplay_status ne 0 }" >
                                                                     <div class="col-md-6">
 										<div class="testimonial testimonial-primary">
+										
+										
 											<blockquote>
-												<p>One of the most important and popular political leader who has sacrificed themselves day and night is to solve problems that are genuinely for the common people. <br>So I have faith, they win the majority. 
-</p>
+												<p> ${feedlist.feedperson_msg }</p>
 											</blockquote>
 											<div class="testimonial-arrow-down"></div>
 											<div class="testimonial-author">
 												<div class="testimonial-author-thumbnail img-thumbnail">
                                                                                                    
 												</div>
-												<p><strong>M. V. Rajasekharan</strong><span></span></p>
+												<p><strong>${feedlist.feedperson_name}</strong><span></span></p>
 											</div>
+											
+	
 										</div>
+										
                                                                         </div>
+                                                                        </c:if>
+                                                                        </c:forEach>
 									
 								</div>
 								
@@ -488,26 +496,26 @@
                                             
                                                 <div class="col-md-12" style="background-color: #f26122;width: 100%;">
                                                     <div class="col-md-6" style="margin-top: 2%;margin-bottom: 2%;">
-							<form>
+							<form:form method="post" action="userfeedback.html" modelAttribute="userfeedback" onsubmit="return FormValidation();" onchange="return FormValidation();">
+								<div class="col-md-6 pr-xs pl-xs form-group" >
+								<form:input path="feedperson_name" class="form-control" style="border:2px solid gray;" id="firstname" placeholder="Name :" onblur="FormValidation();" onchange="FormValidation();" />
+								</div>
+							
 								<div class="col-md-6 pr-xs pl-xs form-group">
-									<input type="text" placeholder="Name :" class="form-control">
+								<form:input path="feedperson_email" class="form-control" id="email" style="border:2px solid gray;"  placeholder="Email :" onblur="FormValidation();"  onchange="FormValidation();"/>
 								</div>
 								<div class="col-md-6 pr-xs pl-xs form-group">
-									<input type="text" placeholder="Company :" class="form-control">
-								</div>
-								<div class="col-md-6 pr-xs pl-xs form-group">
-									<input type="text" placeholder="E-Mail :" class="form-control">
-								</div>
-								<div class="col-md-6 pr-xs pl-xs form-group">
-									<input type="text" placeholder="Phone :" class="form-control">
+								<form:input path="feedperson_phone" placeholder="Phone :" style="border:2px solid gray;"  class="form-control"  id="ppp" onblur="FormValidation();" onchange="FormValidation();"/>
+									
 								</div>
 								<div class="col-md-12 pr-xs pl-xs form-group">
-									<textarea placeholder="Message" class="form-control" rows="5"></textarea>
+								<form:textarea path="feedperson_msg" placeholder="Message" style="border:2px solid gray;resize:none;"  id="msg" class="form-control" rows="5"  onblur="FormValidation();" onchange="FormValidation();" />
+		
 								</div>
 								<div class="col-md-12 pr-xs pl-xs right">
 									<input type="submit" class="btn btn-warning btn-lg" value="Send Message">
 								</div>
-							</form>
+							</form:form>
 						</div>
                                                     <div class="col-md-6" style="margin-top: 2%;">
 <!--							<iframe class="mapframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497698.6600754044!2d77.35073403427613!3d12.954517010883638!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c9b44e6d%3A0xf8dfc3e8517e4fe0!2sBengaluru%2C+Karnataka!5e0!3m2!1sen!2sin!4v1521968208996" frameborder="0" style="border:0" allowfullscreen></iframe>-->
@@ -611,5 +619,113 @@
                 <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TRGKVXJ" height="0" width="0" style="display:none;visibility:hidden"></iframe>
                 </noscript>
                 <!-- End Google Tag Manager (noscript) -->
+                
+                <script type="text/javascript">
+function FormValidation()
+{
+	
+  var fn=document.getElementById('firstname').value;
+    if(fn == ""){
+        document.getElementById('firstname').style.borderColor = "red";
+        return false;
+    }else{
+        document.getElementById('firstname').style.borderColor = "green";
+    }
+    if (/^[0-9]+$/.test(document.getElementById("firstname").value)) {
+      
+        document.getElementById('firstname').style.borderColor = "red";
+        return false;
+    }else{
+        document.getElementById('firstname').style.borderColor = "green";
+        
+    }
+    if(fn.length <=2){
+        
+        document.getElementById('firstname').style.borderColor = "red";
+        return false;
+    }else{
+        document.getElementById('firstname').style.borderColor = "green";
+    }
+    
+    var em=document.getElementById('email').value;
+    if(em=="")
+ 	   {
+ 	   document.getElementById('email').style.borderColor = "red";
+ 	   
+        return false;
+    }else{
+        document.getElementById('email').style.borderColor = "green";    	    
+    }
+    if(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/.test(document.getElementById("email").value))
+    	{
+    	document.getElementById('email').style.borderColor = "green";
+    	}
+    else
+	   {
+	   document.getElementById('email').style.borderColor = "red";
+	   return false;
+	   }
+   
+   var ph=document.getElementById('ppp').value;
+   if(ph=="")
+	   {
+	   document.getElementById('ppp').style.borderColor = "red";
+       return false;
+   }else{
+       document.getElementById('ppp').style.borderColor = "green";
+   }
+  if(/^[789]\d{9}$/.test(document.getElementById("ppp").value))
+	   {
+	   
+	   document.getElementById('ppp').style.borderColor = "green";
+	   }
+  else
+  {
+  document.getElementById('ppp').style.borderColor = "red";
+  return false;
+  }
+  var msg=document.getElementById('msg').value;
+	
+  if(msg== "")
+  {
+      document.getElementById('msg').style.borderColor = "red";
+      return false;
+  }
+  else
+  {
+      document.getElementById('msg').style.borderColor = "green";
+  }
+  if (/^[0-9]+$/.test(document.getElementById("msg").value)) 
+  {
+     //alert("First Name Contains Numbers!");
+      document.getElementById('msg').style.borderColor = "red";
+      return false;
+  }
+  else
+  {
+      document.getElementById('msg').style.borderColor = "green";
+  }
+  if(msg.length <=2)
+  {
+      //alert('Your Name is To Short');
+      document.getElementById('msg').style.borderColor = "red";
+      return false;
+  }
+  else
+  {
+      document.getElementById('msg').style.borderColor = "green";
+  }
+  
+   
+   
+	   
+}
+
+
+  
+		
+	</script>
+                
 	</body>
+	
 </html>

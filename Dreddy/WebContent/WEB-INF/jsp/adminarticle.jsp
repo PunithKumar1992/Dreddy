@@ -11,6 +11,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="a"WebContent/WEB-INF/jsp/adminarticle.jsp"pplication/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- bootstrap-css -->
 <link rel="stylesheet" href="admincss/bootstrap.min.css" >
+<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+
 <!-- //bootstrap-css -->
 <!-- Custom CSS -->
 <link href="admincss/style.css" rel='stylesheet' type='text/css' />
@@ -124,6 +126,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <a href="admincontact.html">
                        <i class="fa fa-comments-o" aria-hidden="true"></i>
                        <span>Contact Us</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="adminarticlecomments.html">
+                      <i class="fa fa-comment" aria-hidden="true"></i>
+                       <span>Article Comments</span>
+                    </a>
+                </li>
+                 <li>
+                    <a href="adminarticlereplys.html">
+                      <i class="fa fa-reply" aria-hidden="true"></i>
+                       <span>Article Replys</span>
                     </a>
                 </li>
                 <!--<li>
@@ -315,9 +329,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		  return false;
 	   });
 </script>
-
 <script type="text/javascript">
-
 $(document).ready(function(){
 	var counter = 2;
     
@@ -339,7 +351,6 @@ $(document).ready(function(){
 	counter++;
 	assign(counter);
      });
-
      $("#removeButton").click(function () {
     	console.log(counter);
 	if(counter==1){
@@ -364,8 +375,6 @@ function assign(count)
 	document.getElementById("artcount").value=count-1;
 	  
 }
-
-
 function confirmActiondelete() {
 		if (!confirm("Are You Sure You want to Delete?")) {
 			return false;
@@ -381,11 +390,9 @@ function confirmActiondelete() {
         firstDay: 1,
         minDate: new Date(),
         maxDate: new Date(2020, 12, 31),
-        yearRange: [2000,2020])
-    }});
+        yearRange: [2000,2020]
+    });
 
     </script>
-
-
 </body>
 </html>

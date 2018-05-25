@@ -3,6 +3,7 @@ package com.appfone.dreddy.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -25,11 +27,17 @@ import com.appfone.dreddy.Service.AdminbannerService;
 import com.appfone.dreddy.Service.AdmingalleryService;
 import com.appfone.dreddy.Service.AdminquotesService;
 import com.appfone.dreddy.Service.AdminvideoService;
+import com.appfone.dreddy.Service.CommentsService;
+import com.appfone.dreddy.Service.ReplyService;
+import com.appfone.dreddy.Service.UserfeedbackService;
 import com.appfone.dreddy.pojo.Dreddyadminregestration;
 import com.appfone.dreddy.pojo.Dreddyarticle;
 import com.appfone.dreddy.pojo.Dreddybanner;
+import com.appfone.dreddy.pojo.Dreddycomments;
+import com.appfone.dreddy.pojo.Dreddyfeedback;
 import com.appfone.dreddy.pojo.Dreddygalareyimg;
 import com.appfone.dreddy.pojo.Dreddyquotes;
+import com.appfone.dreddy.pojo.Dreddyreply;
 import com.appfone.dreddy.pojo.Dreddyvideos;
 import com.appfone.dreddy.util.Emailutility;
 
@@ -56,12 +64,16 @@ public class DreddyController {
 		List<Dreddyvideos> videolist = adminvideoservice.getallvideos();
 		List<Dreddygalareyimg> gallerylist = admingalleryservice.allimglist();
 		List<Dreddyquotes> quoteslist = quoteservice.getallQuoteslist();
+		List<Dreddyfeedback>feedlist = feedservice.getUserfeedlist();
 		System.out.println("in controller");
+		Dreddyfeedback feedback = new Dreddyfeedback();
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("videolist", videolist);
 		mv.addObject("gallerylist", gallerylist);
 		mv.addObject("quoteslist", quoteslist);
 		mv.addObject("bannerlist", list);
+		mv.addObject("feedlist", feedlist);
+		mv.addObject("userfeedback", feedback);
 		mv.setViewName("index");
 		return mv;
 	}
@@ -85,15 +97,19 @@ public class DreddyController {
 		{
 			sessionn.setAttribute("activeuser", username);
 			sessionn.setAttribute("activepassword", pass);
-			return "redirect:adminloginsuccess.html";
+			
+			return "redirect:/adminloginsuccess.html";
+			
 		}
-		return "redirect:adminloginfailure.html";
+		
+		return "redirect:/adminloginfailure.html";
+		
 		
 		
 		
 	}
 	
-	@RequestMapping(value="/adminloginsuccess")
+	@RequestMapping(value="/adminloginsuccess.html")
 	public ModelAndView adminloginsuccessController()
 	{	
 		if((sessionn.getAttribute("activeuser"))==null)
@@ -110,16 +126,9 @@ public class DreddyController {
 	}
 	
 	
-	@RequestMapping(value="/adminloginfailure")
+	@RequestMapping(value="/adminloginfailure.html")
 	public ModelAndView adminloginfailureController()
 	{
-		if((sessionn.getAttribute("activeuser"))==null)
-		{
-			ModelAndView mv= new ModelAndView();
-			mv.setViewName("adminlogin");
-			return mv;
-		}
-
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("adminlogin");
 		String err="Username or Password Missmatch";
@@ -859,12 +868,21 @@ public class DreddyController {
 		return mv;
 	}
 	@RequestMapping(value="/deleteadminarticle.html")
-	public String deleteadminarticleController(@RequestParam("article_id")int article_id)
+	public String deleteadminarticleController(@RequestParam("article_id")int article_id,@RequestParam("article_image")String article_image,@RequestParam("article_gridimage")String article_gridimage)
 	{
 		if((sessionn.getAttribute("activeuser"))==null)
 		{
 			return"redirect:/admin";
 		}
+		String floderpath= context.getRealPath("")+File.separator+"images"+File.separator+"articleimages"+File.separator;
+		System.out.println("floder path is " +floderpath);
+		File delfile=new File(floderpath,article_image);
+		delfile.delete();
+		
+		String floderpath1= context.getRealPath("")+File.separator+"images"+File.separator+"articlegridimages"+File.separator;
+		System.out.println("floder path is " +floderpath1);
+		File delfile1=new File(floderpath1,article_gridimage);
+		delfile1.delete();
 		articleservice.deletearticle(article_id);
 		return "redirect:/adminarticle.html";
 		
@@ -887,9 +905,20 @@ public class DreddyController {
 	public ModelAndView blogarticleController(@RequestParam("article_id")int article_id)
 	{
 		Dreddyarticle currentarticle= articleservice.getsinglearticle(article_id);
+		String fulldate = currentarticle.getArticle_date();
+		String date = fulldate.substring(8, 10);
+		String month = fulldate.substring(4, 7);
 		List<Dreddyarticle>list = articleservice.getallarticle();
+		List<Dreddycomments>cmtreplylist= commentservice.getcommentlist(article_id);
+		Dreddycomments comment= new Dreddycomments();
+		Dreddyreply replymsg = new Dreddyreply();
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("currentarticle", currentarticle);
+		mv.addObject("articlecomment", comment);
+		mv.addObject("cmtrplylist", cmtreplylist);
+		mv.addObject("curartdate", date);
+		mv.addObject("curartmonth", month);
+		mv.addObject("replymsg", replymsg);
 		mv.addObject("recentartlist", list);
 		mv.setViewName("blogarticle");
 		return mv;
@@ -901,6 +930,9 @@ public class DreddyController {
 	@RequestMapping(value="/saveadminarticle")
 	public String saveadminarticleController(@ModelAttribute("adminarticle")Dreddyarticle articles,@RequestParam Map<String, String>reqparam)
 	{
+		String caption =articles.getArticle_caption();
+		caption = "<p style='text-align: justify;text-decoration: none;color: #f57c20;'>"+caption +"</p>";
+		
 		System.out.println("save controller");
 		if((sessionn.getAttribute("activeuser"))==null)
 		{
@@ -966,12 +998,12 @@ public class DreddyController {
 			
 			e.printStackTrace();
 		}
-		  String caption=articles.getArticle_caption();
-		  caption="<p style='text-align: justify;'>"+caption+"</p>";
+		  
 		  articles.setArticle_caption(caption);
 		  String grid = articles.getArticle_brief();
 		  grid="<p style='text-align: justify;'>"+grid+"</p>";
 		  articles.setArticle_brief(grid);
+		  articles.setArticle_comments(0);
 	  articleservice.saveArticle(articles);
 		return "redirect:/adminarticle.html";
 	}
@@ -1081,5 +1113,171 @@ public class DreddyController {
 		
 	}
 	
+	@Autowired
+	private UserfeedbackService feedservice;
+	@RequestMapping(value="/userfeedback.html")
+	public ModelAndView userfeedbackController(@ModelAttribute("userfeedback")Dreddyfeedback feedback)
+	{
+		String to = "seemayaladagi156@gmail.com";
+		String sub= "User feedback ";
+		String msg = "This is the feedback mail sended  by " +feedback.getFeedperson_name() +"\n and his/her mail id is " +feedback.getFeedperson_email() +"\n and feedback message is " +feedback.getFeedperson_msg();
+		Emailutility.send(to, sub, msg);
+		feedback.setFeeddisplay_status(0);
+		feedservice.saveUserfeedback(feedback);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("feedbackpopup");
+		return mv;
+	}
 	
+	
+	@RequestMapping(value="/adminpionners.html")
+	public ModelAndView adminpionnersController()
+	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			ModelAndView mv= new ModelAndView();
+			mv.setViewName("adminlogin");
+			return mv;
+		}
+		List<Dreddyfeedback> list = feedservice.getUserfeedlist();
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("adminfeedlist", list);
+		mv.setViewName("adminpionners");
+		return mv;
+		
+	}
+	
+	@RequestMapping(value="/deletepionner.html")
+	public String deletepionnerController(@RequestParam("feed_id")int feed_id)
+	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			return"redirect:/admin";
+		}
+		feedservice.deletefeedback(feed_id);
+		return "redirect:/adminpionners.html";
+		
+	}
+	
+	@Autowired
+	private CommentsService commentservice;
+	@RequestMapping(value="/commentarticle.html")
+	public String commentarticleController(@ModelAttribute("articlecomment")Dreddycomments comments,@RequestParam("commentarticleid")int cmtarticleid)
+	{
+		Dreddyarticle article=articleservice.getsinglearticle(cmtarticleid);
+		 int cmtcount=0;
+		 cmtcount = article.getArticle_comments();
+		 cmtcount=cmtcount+1;
+		 article.setArticle_comments(cmtcount);
+		 articleservice.updatearticle(article);
+		comments.setArticle_id(cmtarticleid);
+		commentservice.saveComment(comments);
+		 return"redirect:/blogarticle.html?article_id="+cmtarticleid;
+		
+		
+	}
+	@Autowired
+	 private ReplyService rplyservice;
+	
+	@RequestMapping("/usercommentreplay.html")
+	public String  usercommentreplayController(@RequestParam("article_id")int article_id, @RequestParam("comment_id")int comment_id, @ModelAttribute("replymsg")Dreddyreply rply)
+	{
+		
+		rply.setArticle_id(article_id);
+		rply.setComment_id(comment_id);
+		rplyservice.saveReply(rply);
+		
+		
+		return "redirect:/blogarticle.html?article_id="+article_id;
+		
+	}
+	
+	@RequestMapping("/hello")  
+	 public @ResponseBody  
+	 String hello(@RequestParam(value = "feed_id") int feed_id,  
+	   @RequestParam(value = "display_status") int display_status)  
+	    {  
+	 Dreddyfeedback feed = feedservice.getsinglefeedback(feed_id);
+	 feed.setFeeddisplay_status(display_status);
+	 feedservice.update_feedback(feed);
+	 String str="";
+	 if(display_status==1)
+	 {
+	 str= "Feed back with id  " +feed_id +" is displayed in pionners field ";
+	 }
+	 else
+	 {
+		 str= "Feed back with id  " +feed_id +" is hided in pionners field ";
+	 }
+	  return str;  
+	  
+	 }  
+	
+	@RequestMapping(value="/adminarticlecomments.html")
+	public ModelAndView adminarticlecommentsController()
+	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			ModelAndView mv= new ModelAndView();
+			mv.setViewName("adminlogin");
+			return mv;
+		}
+	
+		List<Dreddycomments>list = commentservice.getallcomments();
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("admincmtlist", list);
+		mv.setViewName("adminarticlecomments");
+		return mv;
+	}
+	
+	@RequestMapping(value="/deleteadmincomment.html")
+	public String deleteadmincommentController(@RequestParam("commenter_id")int commenter_id,@RequestParam("article_id")int article_id)
+	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			return"redirect:/admin";
+		}
+		Dreddyarticle article = articleservice.getsinglearticle(article_id);
+		int cmtcount = article.getArticle_comments();
+		cmtcount=cmtcount-1;
+		article.setArticle_comments(cmtcount);
+		articleservice.updatearticle(article);
+		commentservice.deletecomment(commenter_id);
+		
+		return "redirect:/adminarticlecomments.html";
+		
+	}
+	
+	@RequestMapping(value="/adminarticlereplys.html")
+	public ModelAndView adminarticlereplysController()
+	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			ModelAndView mv= new ModelAndView();
+			mv.setViewName("adminlogin");
+			return mv;
+		}
+		List<Dreddyreply>list = rplyservice.getallreplylist();
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("rplylist", list);
+		mv.setViewName("adminarticlereplys");
+		return mv;
+	}
+	@RequestMapping(value="/deleteadminreply.html")
+	public String deleteadminreplyController(@RequestParam("reply_id")int reply_id)
+	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			return"redirect:/admin";
+		}
+		
+		rplyservice.deletereply(reply_id);
+		return "redirect:/adminarticlereplys.html";
+		
+		
+		
+		
+	}
 }
