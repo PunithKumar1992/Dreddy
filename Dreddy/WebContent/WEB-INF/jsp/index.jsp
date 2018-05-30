@@ -1,20 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-     <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+  <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-    
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 	<head>
 		<!-- Basic -->
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">	
-		<title>Dayananda Reddy : Home1</title>	
+		<title>Dayananda Reddy : Home</title>	
 		<!-- Favicon -->
 		<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
 		<link rel="apple-touch-icon" href="images/favicon.png">
 		<!-- Mobile Metas -->
 		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+                <meta name="description" content="Dayananda reddy is one such rare conscientious individual who has done everything in his means to make society a better place "> 
                 <meta name="title" content="Dayananda reddy Ex Mlc">
                 <meta name="description" content="dayananda reddy">
                 <meta name="keywords" content="dayanandareddy biography, dayananda reddy assets, dayananda reddy mlc wiki, dayananda reddy wiki, dayanand reddy mlc, bharatiya janata party Karnataka
@@ -50,7 +50,6 @@
 		<link rel="stylesheet" href="css/media.css">
 		<!-- Head Libs -->
 		<script src="vendor/modernizr/modernizr.min.js"></script>
-                <!-- Google Tag Manager -->
                 <script>
                 (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
                 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -67,6 +66,7 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-116664454-1');
                 </script>
+              
 	</head>
 	<body class="one-page" data-target="#header" data-spy="scroll" data-offset="100">
 		<div class="body">
@@ -178,12 +178,12 @@
 						<h1 class="mainheading">Blog</h1>
 						<div class="blogpad">
 							<div class="col-md-6 p-lg">
-								<p style="text-align: justify;">Thank you all for being part of a wonderful cause today.Dayananda foundation celebrates its 6th anniversary today reaching a new milestone of 7500+ adopted students.</p>
+                                                                <p style="text-align: justify;">Thank you all for being part of a wonderful cause today.Dayananda foundation celebrates its 6th anniversary today reaching a new milestone of 7500+ adopted students.</p>
 								<p style="text-align: justify;">Responding to the needs of children and women in FOUNDATION is a registered nongovernment organization, which works purely on a nonprofit basis.</p>
 								<p style="text-align: justify;">His main areas of creating social impact have always been access to quality education for the under privileged, women empowerment, health and wellness camps, cultural and youth centric activities.</p>
 							</div>
 							<div class="col-md-6 p-none">
-                                                            <img src="images/blog.png">
+								<img src="images/blog.png">
 							</div>
 						</div>
 					</div>
@@ -206,7 +206,7 @@
 							</div>
 						</div>
 						<div class="col-md-6">
-                                                    <img src="images/about.png">
+							<img src="images/about.png">
 						</div>
 					</div>
 				</div>
@@ -336,7 +336,7 @@
 						<div class="col-md-12">
 							<h1 class="mainheading mt-lg mb-xlg">Contribution</h1>
 							<div class="col-md-4">
-                                                            <img src="images/contribution.png">
+								<img src="images/contribution.PNG">
 							</div>
 							<div class="col-md-8">
 								<p class="mt-xlg pt-xlg pb-xlg" style="text-align: justify;">Mr. Dayananda Reddy, was elected as a Member of Legislative Council of Karnataka representing the local bodies of Bangalore Urban District which covers 28 assembly constituencies. When the founder took charge as a legislator on 05/01/2010, his first focus was on education & employment issues of the youth. He found huge disparity in the education system of rural and urban students. He also noted the following statistics of employment and employability skills of Indian youth. These shocking figures shown below gave birth to Dayananda Foundation in 2010.</p>
@@ -459,7 +459,7 @@
 							<h1 class="mainheading mt-xlg pb-xlg mb-xlg">Follow</h1>
 						</div>
 						<div class="col-md-4">
-							<a href=" #"><iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FBTdayanandareddy%2F&tabs=timeline&width=350&height=530&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="350" height="530" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe></a>
+							<a href=" #"><iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FBTdayanandareddy%2F&tabs=timeline&width=350&height=530&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="350" height="550" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe></a>
 						</div>
 						<div class="col-md-4">
                                                     <p style="float:right;border:1px solid #e9ebee;height: 532px;"><a class="twitter-timeline" href="https://twitter.com/btdayanandreddy?ref_src=twsrc%5Etfw" width="350" height="530" ></a></p>
@@ -470,7 +470,7 @@
 					</div>
 				</div>
 			</section>
-			<section id="Contact" class="section">
+						<section id="Contact" class="section">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12">
@@ -578,13 +578,33 @@
 					</div>
 				</div>
 			</div>
-			
-		</div>
+			<div class="modal fade" id="pageloadpopup" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+				<div class="modal-dialog">
+                                    <div class="modal-content" style="width: 100%;">
+						<div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="defaultModalLabel"></h4>
+						</div>
+						<div class="modal-body">
+						<div class="col-md-6">
+                                        <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FBTdayanandareddy%2F&tabs=timeline&width=250&height=600&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"  height="600" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+													</div>
+													<div class="col-md-6" >
+                                       <a class="twitter-timeline" href="https://twitter.com/btdayanandreddy?ref_src=twsrc%5Etfw" height=600>Tweets by btdayanandreddy</a>
+													</div>
+
+												
+													
+						<div class="modal-footer">
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
 		<!-- Vendor -->
+                
                 //embed tweeter
                 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                //embed instagram
-                <script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
 		<script src="vendor/jquery/jquery.min.js"></script>
 		<script src="vendor/jquery.appear/jquery.appear.min.js"></script>
 		<script src="vendor/jquery.easing/jquery.easing.min.js"></script>
@@ -613,7 +633,6 @@
 				$('#pageloadpopup').modal('show');
 			});
 		</script>
-                
                 <!-- Google Tag Manager (noscript) -->
                 <noscript>
                 <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TRGKVXJ" height="0" width="0" style="display:none;visibility:hidden"></iframe>
@@ -725,13 +744,6 @@ function FormValidation()
   
 		
 	</script>
-<script type="text/javascript">
-$("body").animate({ scrollTop: '1000' }, 500, function(){
-    $("body").animate({ scrollTop: '0' }, 500, function(){
-        $("body").animate({ scrollTop: '1000' }, 500);
-    });
-});
-</script>
+
 	</body>
-	
 </html>
