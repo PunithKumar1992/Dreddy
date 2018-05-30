@@ -54,7 +54,7 @@ public class Dreddyarticle {
 	private int article_comments;
 	
 	@OneToMany(mappedBy="article")
-	private List<Dreddycomments>comments=new ArrayList<>();
+	 List<Dreddycomments>comments=new ArrayList<Dreddycomments>();
 	
 
 	public int getArticle_comments() {

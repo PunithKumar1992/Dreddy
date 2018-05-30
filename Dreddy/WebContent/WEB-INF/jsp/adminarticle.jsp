@@ -111,21 +111,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </a>
                 </li>
 		<li>
-                    <a href="adminregistration.html">
-                       <i class="fa fa-comments-o" aria-hidden="true"></i>
-                       <span>Registration</span>
+                    <a href="adminquotes.html">
+                      <i class="fa fa-quote-left" aria-hidden="true"></i>
+                       <span>Quotes</span>
                     </a>
                 </li>
-		<li>
-                    <a href="">
+		        <li>
+                    <a href="adminpionners.html">
                        <i class="fa fa-comments-o" aria-hidden="true"></i>
-                       <span>Blog</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="admincontact.html">
-                       <i class="fa fa-comments-o" aria-hidden="true"></i>
-                       <span>Contact Us</span>
+                       <span>Pionners</span>
                     </a>
                 </li>
                 <li>
@@ -140,19 +134,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                        <span>Article Replys</span>
                     </a>
                 </li>
-                <!--<li>
-                    <a href="audition.html">
-                       <i class="fa fa-comments-o" aria-hidden="true"></i>
-                        <span></span>
-                    </a>
-                </li>
-				
-		<li>
-                    <a href="feedback.html">
-                       <i class="fa fa-registered" aria-hidden="true"></i>
-                        <span></span>
-                    </a>
-                </li>-->
+               
             </ul>            </div>
         <!-- sidebar menu end-->
     </div>
@@ -265,10 +247,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<!-- //gallery -->
 			</td>
 			
-			<td>
+			
 		 
-		<td><a href="${deleteadminarticle}"><button type="submit" class="btn btn-info" style="margin-top:-2%"><i class="fa fa-trash" aria-hidden="true">Delete</i></button></a></td>
-		  </td>
+		<td><a href="${deleteadminarticle}" onclick="return confirmActiondelete();"><button type="button" class="btn btn-info" style="margin-top:-2%"><i class="fa fa-trash" aria-hidden="true">Delete</i></button></a></td>
+		 
 		 
 		   </tr>
 		   </c:forEach>
@@ -394,5 +376,15 @@ function confirmActiondelete() {
     });
 
     </script>
+    <script type="text/javascript">
+function confirmActiondelete() {
+	if (!confirm("Are You Sure You want to Delete?")) {
+		return false;
+	}
+}
+
+
+</script>
+
 </body>
 </html>

@@ -30,9 +30,9 @@
     	<bean id="myDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
           destroy-method="close">
         <property name="driverClass" value="com.mysql.jdbc.Driver" />
-        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/dreddy"/>
+        <property name="jdbcUrl" value="jdbc:mysql://node53179-dreddy.mycloud.by/chandrashekarnaik_dreddy"/>
         <property name="user" value="root" />
-        <property name="password" value="root" /> 
+        <property name="password" value="MRLcbs71413"/> 
         <property name="minPoolSize" value="5" />
         <property name="maxPoolSize" value="20" />
         <property name="maxIdleTime" value="30000" />

@@ -202,7 +202,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</c:url>
 					<c:if test="${leaderimglist.galleryimg_type=='With Leader'}">
 					<div class="col-sm-4 gallery-grids-left">
-					<a href="${deleteadminleaderimg}"><i class="fa fa-trash" aria-hidden="true"></i></a>
+					<a href="${deleteadminleaderimg}" onclick="return confirmActiondelete();"><i class="fa fa-trash" aria-hidden="true"></i></a>
 				
 						<div class="gallery-grid">
 							<a class="example-image-link" href="images/galleryimages/${leaderimglist.gallery_img}" data-lightbox="example-set" data-title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae cursus ligula">
@@ -330,5 +330,14 @@ function Validation()
 
 </script>
 
+<script type="text/javascript">
+function confirmActiondelete() {
+	if (!confirm("Are You Sure You want to Delete?")) {
+		return false;
+	}
+}
+
+
+</script>
 </body>
 </html>

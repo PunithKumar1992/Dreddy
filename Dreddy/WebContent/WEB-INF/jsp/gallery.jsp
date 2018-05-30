@@ -179,5 +179,12 @@
                 <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TRGKVXJ" height="0" width="0" style="display:none;visibility:hidden"></iframe>
                 </noscript>
                 <!-- End Google Tag Manager (noscript) -->
+                 <script type="text/javascript">
+                $("body").animate({ scrollTop: '1000' }, 500, function(){
+                    $("body").animate({ scrollTop: '0' }, 500, function(){
+                        $("body").animate({ scrollTop: '1000' }, 500);
+                    });
+                });
+                </script>	
 	</body>
 </html>

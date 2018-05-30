@@ -191,16 +191,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
            <td>${adminfeedlist.feedperson_email}</td>
            <td>${adminfeedlist.feedperson_msg}</td>
            <td>${adminfeedlist.feeddisplay_status}</td>
-           <td> <input type="button" name="displayradio" id="showr" onmouseover="show('${adminfeedlist.feed_id}',1);" value="show"> <br> <input type="button" id="hider" onmouseover="hide('${adminfeedlist.feed_id}',0);" name="displayradio" value="hide" checked="checked"> </td>
-           <td><a href="${deletepionner}"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
-           <input type="hidden" name="feedid" id="feedid" value="">
-           <input type="hidden" name="displaystatus" id="displaystatus" value="">
-		 
+           <td> <input type="button" name="displayradio" onclick="showdisplay()" id="showr" onmouseover="show('${adminfeedlist.feed_id}',1);" value="show"> <br> <input type="button" onclick="hidedisplay();" id="hider" onmouseover="hide('${adminfeedlist.feed_id}',0);" name="displayradio" value="hide" checked="checked"> </td>
+           <td><a href="${deletepionner}" onclick="return confirmActiondelete();"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+          
 	</tr>
 	</c:forEach>
 	
         </tbody>
+        
       </table>
+       <input type="hidden" name="feedid" id="feedid" value="">
+           <input type="hidden" name="displaystatus" id="displaystatus" value="">
+		 
     </div>
     
   </div>
@@ -246,7 +248,7 @@ function hide(feedid,displaystatus)
 </script>
 
 <script type="text/javascript">
-$("#showr").click(function(){
+function showdisplay(){
 	
    var feedid = $("#feedid").val();
    var displaystatus = $("#displaystatus").val();
@@ -262,11 +264,11 @@ $("#showr").click(function(){
      alert('Error: ' + e);   
     }  
    });  
-});
+}
 </script>
 
 <script type="text/javascript">
-$("#hider").click(function(){
+function hidedisplay(){
 	
    var feedid = $("#feedid").val();
    var displaystatus = $("#displaystatus").val();
@@ -283,7 +285,14 @@ $("#hider").click(function(){
      alert('Error: ' + e);   
     }  
    });  
-});
+}
+</script>
+<script type="text/javascript">
+function confirmActiondelete() {
+	if (!confirm("Are You Sure You want to Delete?")) {
+		return false;
+	}
+}
 </script>
 </body>
 </html>

@@ -321,6 +321,10 @@ $(document).ready(function(){
     
   });
   
+
+</script>
+
+<script type="text/javascript">
 function assign(count)
 {
 	  
@@ -328,14 +332,19 @@ function assign(count)
 	document.getElementById("artcount").value=count-1;
 	  
 }
-
-
-function confirmActiondelete() {
-		if (!confirm("Are You Sure You want to Delete?")) {
-			return false;
-		}
-	}
 </script>
+
+
+<script type="text/javascript">
+function confirmActiondelete() {
+	if (!confirm("Are You Sure You want to Delete?")) {
+		return false;
+	}
+}
+
+
+</script>
+
 <script type="text/javascript">
 function Upload() {
     //Get reference of FileUpload.
@@ -369,7 +378,7 @@ function Upload() {
                     }
                     else
                     	{
-                    	 alert("Height and Width must not exceed 782px & 324px.");
+                    	 alert("Height and Width must be 782px & 324px.");
                     	document.getElementById('sub').disabled = true;
           
                     	}

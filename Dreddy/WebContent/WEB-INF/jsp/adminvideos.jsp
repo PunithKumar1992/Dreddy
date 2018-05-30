@@ -192,7 +192,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<c:param name="video_id" value="${videolist.video_id}"></c:param>
 				</c:url>
 					<div class="col-sm-4 gallery-grids-left">
-					<a href="${admindeletevideo}"><i class="fa fa-trash" aria-hidden="true"></i></a>
+					<a href="${admindeletevideo}" onclick="return confirmActiondelete();"><i class="fa fa-trash" aria-hidden="true"></i></a>
 						<div class="gallery-grid">
 							<a class="example-image-link" href="https://www.youtube.com/embed/LaSv_INZJTM" data-lightbox="example-set" data-title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae cursus ligula">
 								<iframe  src="${videolist.video_path}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -232,6 +232,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
 <script src="adminjs/jquery.scrollTo.js"></script>
 <!-- gallery -->
+<script type="text/javascript">
+function confirmActiondelete() {
+	if (!confirm("Are You Sure You want to Delete?")) {
+		return false;
+	}
+}
+
+
+</script>
 
 </body>
+
 </html>

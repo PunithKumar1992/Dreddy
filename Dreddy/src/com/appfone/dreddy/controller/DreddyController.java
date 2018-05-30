@@ -57,8 +57,8 @@ public class DreddyController {
 	@Autowired
 	private AdminquotesService quoteservice;
 	
-	@RequestMapping(value="/index.html")
-	public ModelAndView indexController()
+	@RequestMapping("/")
+	public ModelAndView Controller()
 	{
 		List<Dreddybanner> list = adminbannerservice.getallbannerlist();
 		List<Dreddyvideos> videolist = adminvideoservice.getallvideos();
@@ -77,6 +77,28 @@ public class DreddyController {
 		mv.setViewName("index");
 		return mv;
 	}
+	
+	@RequestMapping("index.html")
+	public ModelAndView iindexController()
+	{
+		List<Dreddybanner> list = adminbannerservice.getallbannerlist();
+		List<Dreddyvideos> videolist = adminvideoservice.getallvideos();
+		List<Dreddygalareyimg> gallerylist = admingalleryservice.allimglist();
+		List<Dreddyquotes> quoteslist = quoteservice.getallQuoteslist();
+		List<Dreddyfeedback>feedlist = feedservice.getUserfeedlist();
+		System.out.println("in controller");
+		Dreddyfeedback feedback = new Dreddyfeedback();
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("videolist", videolist);
+		mv.addObject("gallerylist", gallerylist);
+		mv.addObject("quoteslist", quoteslist);
+		mv.addObject("bannerlist", list);
+		mv.addObject("feedlist", feedlist);
+		mv.addObject("userfeedback", feedback);
+		mv.setViewName("index");
+		return mv;
+	}
+	
 	
 	@RequestMapping(value="/admin")
 	public ModelAndView adminController()

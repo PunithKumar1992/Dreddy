@@ -624,7 +624,13 @@ function FormValidation1()
 	
 	
 	</script>
-	
+	 <script type="text/javascript">
+                $("body").animate({ scrollTop: '1000' }, 500, function(){
+                    $("body").animate({ scrollTop: '0' }, 500, function(){
+                        $("body").animate({ scrollTop: '1000' }, 500);
+                    });
+                });
+                </script>
 	
 	
                 

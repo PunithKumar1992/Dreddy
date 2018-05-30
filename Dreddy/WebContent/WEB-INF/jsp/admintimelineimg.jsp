@@ -203,7 +203,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</c:url>
 					<c:if test="${timeimglist.galleryimg_type=='TimeLine'}">
 					<div class="col-sm-4 gallery-grids-left">
-					<a href="${deleteadmintimeimg}"><i class="fa fa-trash" aria-hidden="true"></i></a>
+					<a href="${deleteadmintimeimg}" onclick="return confirmActiondelete();"><i class="fa fa-trash" aria-hidden="true"></i></a>
 				
 						<div class="gallery-grid">
 							<a class="example-image-link" href="images/galleryimages/${timeimglist.gallery_img}" data-lightbox="example-set" data-title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae cursus ligula">
@@ -326,6 +326,16 @@ function Validation()
 	
 	
 	}
+
+
+</script>
+
+<script type="text/javascript">
+function confirmActiondelete() {
+	if (!confirm("Are You Sure You want to Delete?")) {
+		return false;
+	}
+}
 
 
 </script>
