@@ -219,7 +219,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<!-- //gallery -->
 			</td>
 			
-	 <td><a href="${banedit}" onclick="return confirmActiondelete();"><i class="fa fa-pencil" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;<a href="${adminbannerdel}" onclick="return confirmActiondelete();"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+	 <td><a href="${banedit}" ><i class="fa fa-pencil" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;<a href="${adminbannerdel}" onclick="return confirmActiondelete();"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
 	
 		 
 	</tr>

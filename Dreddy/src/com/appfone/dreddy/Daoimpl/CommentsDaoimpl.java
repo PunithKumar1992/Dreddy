@@ -19,9 +19,7 @@ public class CommentsDaoimpl implements CommentsDao {
 	@Override
 	public void saveComment(Dreddycomments comment) {
 		Session session = factory.openSession();
-		session.save(comment);
-		
-
+		session.save(comment);		
 	}
 	@Override
 	public List<Dreddycomments> getcommentlist(int article_id) {

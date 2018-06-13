@@ -22,8 +22,6 @@ public class UserfeedbackDaoimpl implements UserfeedbackDao {
 	public void saveUserfeedback(Dreddyfeedback feedback) {
 		Session session = factory.openSession();
 		session.save(feedback);
-		
-
 	}
 
 	@Override
@@ -31,7 +29,6 @@ public class UserfeedbackDaoimpl implements UserfeedbackDao {
 		Session session = factory.getCurrentSession();
 		Query query = session.createQuery("from Dreddyfeedback");
 		List<Dreddyfeedback>list =query.list();
-	
 		return list;
 	}
 
@@ -41,7 +38,6 @@ public class UserfeedbackDaoimpl implements UserfeedbackDao {
 		Query query = session.createQuery("delete from Dreddyfeedback where feed_id =:fid");
 		query.setParameter("fid", feed_id);
 		int res= query.executeUpdate();
-		
 	}
 
 	@Override
@@ -55,7 +51,6 @@ public class UserfeedbackDaoimpl implements UserfeedbackDao {
 	public void update_feedback(Dreddyfeedback feedback) {
 		Session session = factory.getCurrentSession();
 		session.update(feedback);
-		
 	}
 
 }

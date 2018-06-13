@@ -21,12 +21,14 @@ public class AdminquotesDaoimpl implements AdminquotesDao{
 		Session session = factory.openSession();
 		Query query = session.createQuery("from Dreddyquotes");
 		List<Dreddyquotes>list = query.list();
+	
 		return list;
 	}
 	@Override
 	public void saveQuotes(Dreddyquotes quotes) {
 		Session session = factory.openSession();
 		session.saveOrUpdate(quotes);
+		
 		
 	}
 	@Override
@@ -35,8 +37,7 @@ public class AdminquotesDaoimpl implements AdminquotesDao{
 		Query query = session.createQuery("delete from Dreddyquotes where  quotes_id =:qid");
 		query.setParameter("qid", quotes_id);
 		int res =query.executeUpdate();
-		
-				
+
 	}
 
 }

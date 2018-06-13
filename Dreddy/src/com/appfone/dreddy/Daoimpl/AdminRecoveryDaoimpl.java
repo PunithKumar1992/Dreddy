@@ -30,8 +30,6 @@ public class AdminRecoveryDaoimpl implements AdminRecoveryDao {
 			flag=1;
 			return flag;
 		}
-		
-		
 		return flag;
 	}
 

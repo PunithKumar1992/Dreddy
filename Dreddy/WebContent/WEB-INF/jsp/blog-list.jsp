@@ -97,11 +97,11 @@
 											<ul class="nav nav-pills" id="mainNav">
 												<li><a data-hash href="index.html">Home</a></li>
 												<li><a data-hash href="index.html#About">About</a></li>
-												<li class="active"><a data-hash href="index.html#Gallery">Gallery</a></li>
+												<li><a data-hash href="index.html#Gallery">Gallery</a></li>
 												<li><a data-hash href="index.html#Videos">Videos</a></li>
 												<li><a data-hash href="index.html#Contributuion">Contributuion</a></li>
 												<li><a data-hash href="index.html#Quotes">Quotes</a></li>
-                                                                                                <li><a data-hash href="blog-list.html">Blog</a></li>
+                                                <li class="active"><a data-hash href="blog-list.html">Blog</a></li>
 												<li><a data-hash href="index.html#Contact">Contact us</a></li>
 											</ul>
 										</nav>

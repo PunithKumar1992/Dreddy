@@ -25,8 +25,6 @@ SessionFactory factory;
 		Session session = factory.openSession();
 		Query query = session.createQuery("from Dreddybanner");
 		List<Dreddybanner>list = query.list();
-		
-		
 		return list;
 	}
 
@@ -37,13 +35,13 @@ SessionFactory factory;
 		query.setParameter("bid", banner_id);
 		int res= query.executeUpdate();
 		
-		
 	}
 
 	@Override
 	public void saveBanner(Dreddybanner banner) {
 	Session session= factory.getCurrentSession();
 	session.saveOrUpdate(banner);
+	
 	}
 
 	@Override
@@ -55,6 +53,7 @@ SessionFactory factory;
 		List list=query.list();
 		Iterator itr=list.iterator();
 		size=Integer.parseInt(itr.next().toString());
+		
 		return size;
 		
 	}

@@ -336,7 +336,7 @@
 						<div class="col-md-12">
 							<h1 class="mainheading mt-lg mb-xlg">Contribution</h1>
 							<div class="col-md-4">
-								<img src="images/contribution.PNG">
+								<img src="images/contribution.png">
 							</div>
 							<div class="col-md-8">
 								<p class="mt-xlg pt-xlg pb-xlg" style="text-align: justify;">Mr. Dayananda Reddy, was elected as a Member of Legislative Council of Karnataka representing the local bodies of Bangalore Urban District which covers 28 assembly constituencies. When the founder took charge as a legislator on 05/01/2010, his first focus was on education & employment issues of the youth. He found huge disparity in the education system of rural and urban students. He also noted the following statistics of employment and employability skills of Indian youth. These shocking figures shown below gave birth to Dayananda Foundation in 2010.</p>

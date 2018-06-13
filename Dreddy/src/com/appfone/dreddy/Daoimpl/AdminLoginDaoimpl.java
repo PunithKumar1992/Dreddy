@@ -25,6 +25,7 @@ public class AdminLoginDaoimpl implements AdminLoginDao {
 		if ((list != null) && (list.size() > 0)) {
 			flag=1;
 		}
+		
 		return flag;
 	
 	}

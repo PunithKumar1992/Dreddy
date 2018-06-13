@@ -24,6 +24,7 @@ private SessionFactory factory;
 		Session session = factory.openSession();
 		Query query = session.createQuery("from Dreddyvideos");
 		List<Dreddyvideos>list = query.list();
+		
 		return list;
 	}
 	@Override
@@ -39,6 +40,7 @@ private SessionFactory factory;
 	public void saveVideo(Dreddyvideos adminvideoss) {
 		Session session = factory.getCurrentSession();
 		session.saveOrUpdate(adminvideoss);
+	
 		
 	}
 

@@ -166,7 +166,7 @@ public class DreddyController {
 		return mv;
 	}
 
-	@RequestMapping(value="/adminlogout.html")
+	@RequestMapping(value="/adminlogout")
 	public String adminlogoutController()
 	{
 		sessionn.invalidate();
@@ -1302,4 +1302,13 @@ public class DreddyController {
 		
 		
 	}
+	
+	@RequestMapping(value="/webmail")
+	public ModelAndView webmailController()
+	{
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("redirect");
+		return mv;
+	}
+	
 }

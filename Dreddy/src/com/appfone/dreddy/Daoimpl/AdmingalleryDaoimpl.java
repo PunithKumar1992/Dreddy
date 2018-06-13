@@ -26,7 +26,6 @@ public class AdmingalleryDaoimpl implements AdmingalleryDao {
 		Session session = factory.getCurrentSession();
 		Query query = session.createQuery("from Dreddygalareyimg");
 		List<Dreddygalareyimg>list = query.list();
-		
 		return list;
 	}
 	@Override
@@ -35,6 +34,7 @@ public class AdmingalleryDaoimpl implements AdmingalleryDao {
 		Query query = session.createQuery("delete from Dreddygalareyimg where gallery_id =:gid");
 		query.setParameter("gid", gallery_id);
 		int res= query.executeUpdate();
+		
 		
 	}
 

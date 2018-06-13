@@ -21,7 +21,6 @@ public class ReplyDaoimpl implements ReplyDao {
 	public void saveReply(Dreddyreply reply) {
 		Session session=factory.openSession();
 		session.save(reply);
-
 	}
 
 
@@ -40,8 +39,7 @@ public class ReplyDaoimpl implements ReplyDao {
 	Session session = factory.getCurrentSession();
 	Query query = session.createQuery("delete from Dreddyreply where reply_id = :rid");
 	query.setParameter("rid", reply_id);
-	int res= query.executeUpdate();
-		
+	int res= query.executeUpdate();	
 	}
 
 }

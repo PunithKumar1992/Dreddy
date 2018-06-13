@@ -2,6 +2,7 @@ package com.appfone.dreddy.Daoimpl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -25,7 +26,6 @@ public class AdminactiveDaoimpl implements AdminactiveDao {
 		query.setParameter("uname", username);
 		query.setParameter("upwd", password);
 		List<Dreddyadminregestration> list = query.list();
-		
 		return list;
 	}
 
@@ -34,7 +34,6 @@ public class AdminactiveDaoimpl implements AdminactiveDao {
 		Session session = factory.getCurrentSession();
 		Query query= session.createQuery("from Dreddyadminregestration");
 		List<Dreddyadminregestration>list = query.list();
-		
 		return list;
 	}
 
@@ -76,6 +75,7 @@ public class AdminactiveDaoimpl implements AdminactiveDao {
 	 {
 		 flag=1;
 	 }
+	
 		return flag;
 	}
 
